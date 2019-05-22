@@ -12,14 +12,48 @@ author: Xun Li
 
 It is a good practice to write your React code in JSX,  so we first need to add Babel so we can compile JSX down into standard Javascript.
 ```
-npm i babel-core --save-dev 
-npm i babel-preset-es2015 babel-preset-react --save-dev
+npm install --save-dev @babel/core @babel/cli @babel/preset-env
+npm install --save @babel/polyfill
 ```
 
 **
 ```
-npm i gulp gulp-babel --save-dev # basic gulp
-npm i gulp-concat gulp-css gulp-sourcemaps --save-dev # plugins
+npm rm --global gulp
+npm install --global gulp-cli
+npm install --save-dev gulp
+npm install --save-dev gulp-css
 ```
 
 ## React
+
+
+## Electron Packaging
+
+```
+npm i electron-builder --save-dev
+```
+
+point the tool to the folder with the code to be compiled through the package.json by adding:
+
+```
+"build": {
+  "appId": "com.test.electrate",
+  "files": [
+    "app/**/*",
+    "node_modules/**/*",
+    "package.json"
+  ],
+  "publish": null
+}
+```
+
+In gulpfile.js
+```
+gulp.task('release', ['copy', 'build'], () => {
+    spawn(
+        'node_modules/.bin/electron-builder', 
+        ['.'], 
+        { stdio: 'inherit' }
+    ).on('close', () => process.exit());
+});
+```
