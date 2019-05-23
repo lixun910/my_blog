@@ -6,6 +6,30 @@ categories: javascript electron node.js react dmg bundler
 author: Xun Li
 ---
 
+## Use Bootstrap in Electron
+
+Bootstrap depends on two modules: `jquery` and `proper.js`
+
+```Bash
+npm install popper.js --save
+npm install jquery --save
+npm install bootstrap --save
+```
+
+To use `Bootstrap` (both style and scripts) in Electron, one needs to require 
+the jquery.js and bootstrap.js
+
+```javascript
+const $ = require('jquery');
+require('popper');
+require('bootstrap')
+```
+
+To include the css files:
+```html
+  <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+```
+
 ## Toolchain
 
 **Compiler**  Babel -- The compiler for next generation JavaScript
