@@ -30,7 +30,8 @@ Your C++ code:
 
 Create a SWIG inteface file, which contains the C++ methods/classes you want to access from R:
 
-// file above: library.i
+{% gist aa6e3b6af11c6fe1351857b85494f5c1 file-library-i.md%}
+
 
 > Note: The first line in library.i  `%module libABC` defines the name of the R library. Since R is sensitive to the name of the file and to the file extension in C and C++ mode, the name of the C++ wrapper file must be the name of the library (libABC).
 
@@ -84,4 +85,7 @@ abc$numObs
 ```
 
 > Note: the cacheMetaData(1) will cause R to refresh its object tables. Without it, inheritance of wrapped objects may fail.
+
+## Building a R package
+
 
