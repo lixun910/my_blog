@@ -1,7 +1,7 @@
 ---
 layout: post
 title: GeoDa Library (Dev notes)
-date:   2019-05-23 13:50:39
+date:   2019-06-01 13:50:39
 categories: c++ swig gdal geoda
 author: Xun Li
 ---
