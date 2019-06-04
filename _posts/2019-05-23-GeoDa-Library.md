@@ -150,11 +150,10 @@ build/
 
 First, we need to copy `libABC.R` file to R/ directory, and copy `libABC.cpp`, `library.h` and `library.cpp` to src/ directory.
 
-To tell R how to compile our C++ source code and wrappers, we also need to create a file `Makevars` under src/ directory. The `Makevars` file is a variant of `GNU Make` that is only for R. Please see document of [R Makevars here](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-Makevars). The most common use of a Makevars file is to set additional preprocessor options (for example include paths and definitions) for C/C++ files via `PKG_CPPFLAGS`, and additional compiler flags by setting `PKG_CFLAGS`, `PKG_CXXFLAGS` or `PKG_FFLAGS`, and linking flag by setting `PKG_LDFLAGS` for C, C++ or Fortran respectively.
+To tell R how to compile our C++ source code and wrappers, we also need to create a file `Makevars` under src/ directory. The `Makevars` file is a variant of `GNU Make` that is only for R. Please see document of [R Makevars here](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-Makevars). The most common use of a Makevars file is to set additional preprocessor options (for example include paths and definitions) for C/C++ files via `PKG_CPPFLAGS`, and additional compiler flags by setting `PKG_CFLAGS`, `PKG_CXXFLAGS` or `PKG_FFLAGS`, and linking flag by setting `PKG_LDFLAGS` for C, C++ or Fortran respectively. 
 
-{% gist aa6e3b6af11c6fe1351857b85494f5c1 Makevars %}
 
-The above file in a R package will be equivlant to running the command `PKG_LIBS="library.cpp" R CMD SHLIB libABC.cpp` to build a libABC.so C++ library. 
+In this example, we have library.cpp and libABC.cpp in the src/ directory, R installer will try to compile them and build a shared library. This will be equivlant to running the command above `PKG_LIBS="library.cpp" R CMD SHLIB libABC.cpp` to build the libABC.so library. 
 
 Then, we need to add file `NAMESPACE` to tell R about the namespace associated with our package.
 
@@ -162,6 +161,8 @@ Then, we need to add file `NAMESPACE` to tell R about the namespace associated w
 {% gist aa6e3b6af11c6fe1351857b85494f5c1 NAMESPACE %}
 
 The last step is to create a `DESCRPTION` file to tell R about this library when install it from source.
+
+{% gist aa6e3b6af11c6fe1351857b85494f5c1 DESCRIPTIon %}
 
 ### Create libABC R package
 
