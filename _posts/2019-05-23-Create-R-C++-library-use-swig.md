@@ -153,7 +153,7 @@ First, we need to copy `libABC.R` file to R/ directory, and copy `libABC.cpp`, `
 To tell R how to compile our C++ source code and wrappers, we also need to create a file `Makevars` under src/ directory. The `Makevars` file is a variant of `GNU Make` that is only for R. Please see document of [R Makevars here](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Using-Makevars). The most common use of a Makevars file is to set additional preprocessor options (for example include paths and definitions) for C/C++ files via `PKG_CPPFLAGS`, and additional compiler flags by setting `PKG_CFLAGS`, `PKG_CXXFLAGS` or `PKG_FFLAGS`, and linking flag by setting `PKG_LDFLAGS` for C, C++ or Fortran respectively. 
 
 
-In this example, we have library.cpp and libABC.cpp in the src/ directory, R installer will try to compile them and build a shared library. This will be equivlant to running the command above `PKG_LIBS="library.cpp" R CMD SHLIB libABC.cpp` to build the libABC.so library. 
+In this example, the Makevars file is empty, since we have library.cpp and libABC.cpp in the src/ directory, and R installer will try to compile them and build a shared library. This is equivlant to running the command above `PKG_LIBS="library.cpp" R CMD SHLIB libABC.cpp` to build the libABC.so library. 
 
 Then, we need to add file `NAMESPACE` to tell R about the namespace associated with our package.
 
@@ -171,9 +171,8 @@ If you have everything mentioned above in place, you can use the following comma
 ```
 cd build
 R CMD build libABC
-R CMD install libABC_0.0-0.tar.gz 
 ```
-The outputs of running the above 3 commands:
+The outputs of running the above commands:
 ```
 $cd build
 
@@ -193,10 +192,14 @@ Removed empty directory ‘libABC/inst’
 
 ### Use libABC R package
 
-The output file of above command is `libABC_0.0-0.tar.gz`. It can be used as an installer on other machine with R program. To install from source directly:
+The output file of above command is `libABC_0.0-0.tar.gz`. It can be used as an installer on other machine with R program. To install it from source directly:
 
 ```
 $ R CMD install libABC_0.0-0.tar.gz 
+```
+
+The output of the installation:
+```
 * installing to library ‘/usr/local/lib/R/3.6/site-library’
 * installing *source* package ‘libABC’ ...
 ** using staged installation
@@ -244,3 +247,21 @@ abc$GetName()
 abc$numObs
 # [1] could be any number since we didn't initialize the value of $numObs
 ```
+
+## Summary
+
+Create a R package with C++ source code using SWIG
+
+1. Create a SWIG interface file (.h) to expose the functions and classes from your C++ source code or library
+
+2. Create R wrappers (.R and .cpp file) using SWIG:
+
+```Shell
+swig -c++ -o libABC.cpp -r library.i
+```
+
+3. Use `R CMD SHLIB` to build and test the R wrapper
+
+4. If testing is successful, create a R package using the R wrappers with your C++ source code/library.
+
+5. Publish your R package.
