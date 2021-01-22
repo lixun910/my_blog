@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 
+title: Rgeoda development setup on Ubuntu Bionics
 date:   2020-06-01 13:50:39
 categories: rgeoda development setup on Ubuntu Bionics
 author: Xun Li
