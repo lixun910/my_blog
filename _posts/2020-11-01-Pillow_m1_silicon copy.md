@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Build arm64 Pillow on Apple M1 Silicon
-date:   2020-10-01 13:50:39
+date:   2020-11-01 13:50:39
 categories: Pillow Apple M1 Silicon Chip
 author: Xun Li
 ---
