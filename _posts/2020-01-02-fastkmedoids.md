@@ -6,15 +6,28 @@ categories: kmedoids clustering algorithm
 author: Xun Li
 ---
 
-I am working on FastKmedoids R package now. It will be on CRAN soon, but you can also 
-build and install from source using  `devtools::install_github("lixun910/fastkmedoids")`
+I am proud to annouce that FastKmedoids is on CRAN now.
 
-
-# Faster K-Medoids Clustering Algorithms
 
 ## Description
 
 This package provides R wrappers of C++ implementation of Faster K-Medoids clustering algorithms (FastPAM, FastCLARA and FastCLARANS) proposed in Erich Schubert and Peter J. Rousseeuw 2019.
+
+## Installation
+
+```R
+install.packages("fastkmedoids")
+```
+![cran status](https://www.r-pkg.org/badges/version/fastkmedoids)
+![cran_downloads](http://cranlogs.r-pkg.org/badges/grand-total/fastkmedoids)
+
+
+
+Install from source code:
+
+```R
+devtools::install_github("lixun910/fastkmedoids")
+```
 
 ## Examples
 ```R
@@ -49,7 +62,7 @@ This package provides R wrappers of C++ implementation of Faster K-Medoids clust
 
 ## Details
 
-The C++ Faster K-Medoids clustering algorithms (FastPAM, FastCLARA and FastCLARANS) are ported from ELKI project (see http://elki-project.github.io/). To generate identical results, the random number generator, specifically the xorshift+ generator, is also ported. The results between this fastkmedoids R package should be the same with ELKI if using same initial seed for random number generator.
+The C++ Faster K-Medoids clustering algorithms (FastPAM, FastCLARA and FastCLARANS) are ported from ELKI project (see http://elki-project.github.io/). To generate identical results, the random number generator, specifically the xorshift+ generator, is also ported. The results of this fastkmedoids R package should be the same with ELKI if using same initial seed for random number generator.
 
 Besides FastPAM, FastCLARA and FastCLARANS, the classic algorithms, including PAM, CLARA and CLARANS, are also implemented. If interested in writing wrappers for these algorithms, please use the github repository: https://github.com/lixun910/fastkmedoids
 
@@ -71,3 +84,4 @@ Erich Schubert, Peter J. Rousseeuw "Faster k-Medoids Clustering: Improving the P
 
 ## See Also
 https://arxiv.org/abs/1810.05691
+
